@@ -93,6 +93,8 @@ export class SidenavComponent implements OnInit {
       console.log('The diaglog was closed', result);
 
       if (result) this.openSnackBar('You nuked it!', '');
+
+      this.router.navigate(['contactmanager', 'welcome']);
     });
   }
 
@@ -102,6 +104,7 @@ export class SidenavComponent implements OnInit {
       for (let user of data) {
         this.userService.addUser(user);
       }
+      this.router.navigate(['contactmanager', 1]);
     }
     );
   }

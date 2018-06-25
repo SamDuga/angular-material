@@ -32,21 +32,21 @@ export class MainContentComponent implements OnInit {
     if (this.paramsSub) this.paramsSub.unsubscribe();
     this.paramsSub = this.route.params.subscribe( params => {
       id = +params['id'];
-      if ( !id  ) {
-        this.landing = true;
-        return;
-      }
 
       if (this.userSub) this.userSub.unsubscribe();
       this.userService.getAllUsers().subscribe( (users: User[]) => {
-        if (users.length === 0) return;
+        if (users.length === 0) {
+          this.empty = true;
+          this.landing = true;
+          return;
+        }
 
         // for use with UserService 
         // this.user = this.userService.getUserbyId(id);
 
         // for use with UserStorageService
         this.user = users.find( u => u.id === id);
-        this.landing = false;
+        this.landing = (!id) ? true : false;
 
         this.userNotes = this.user.notes;
       });
