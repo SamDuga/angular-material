@@ -2,8 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog.component';
 import { Router } from '@angular/router';
-import { UserStorageService } from '../../services/user-storage.service';
-import { User } from '../../models/user';
 
 @Component({
   selector: 'app-toolbar',
@@ -22,7 +20,7 @@ export class ToolbarComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
-    private userService: UserStorageService,) { }
+    ) { }
 
   ngOnInit() {
   }
@@ -35,7 +33,7 @@ export class ToolbarComponent implements OnInit {
     let diaglogRef = this.dialog.open(NewContactDialogComponent, {width: '450px' } );
 
     diaglogRef.afterClosed().subscribe( result => {
-      console.log('The diaglog was closed', result)
+      console.log('The diaglog was closed', result);
 
       if (result) this.openSnackBar('Contact added!', 'Navigate')
         .onAction().subscribe( () => {

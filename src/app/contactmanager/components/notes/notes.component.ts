@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Note } from '../../models/note';
 import { MatTableDataSource, MatPaginator, MatSort, MatSnackBarRef, SimpleSnackBar, MatDialog, MatSnackBar } from '@angular/material';
 import { UserService } from '../../services/user.service';
@@ -14,14 +14,14 @@ import { User } from '../../models/user';
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
-export class NotesComponent implements OnInit {
+export class NotesComponent implements OnInit, AfterViewInit {
 
   @Input() notes: Note[];
 
   dataSource: MatTableDataSource<Note>;
   displayedColumns = ['position', 'title', 'date'];
   dataSub: Subscription;
-  id: number
+  id: number;
   user: User;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -48,7 +48,7 @@ export class NotesComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Note>(this.user.notes);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }) 
+      });
     });
   }
 
@@ -67,9 +67,9 @@ export class NotesComponent implements OnInit {
     let diaglogRef = this.dialog.open(NewNoteDialogComponent, {width: '450px', data:  { user: this.user } });
 
     diaglogRef.afterClosed().subscribe( result => {
-      console.log('The diaglog was closed', result)
+      console.log('The diaglog was closed', result);
       this.refresh();
-      this.openSnackBar('Note added!','');
+      this.openSnackBar('Note added!', '');
     });
 
   }
