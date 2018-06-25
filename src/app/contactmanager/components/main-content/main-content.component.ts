@@ -35,7 +35,7 @@ export class MainContentComponent implements OnInit {
       if ( !id  ) {
         this.landing = true;
         return;
-      };
+      }
 
       if (this.userSub) this.userSub.unsubscribe();
       this.userService.getAllUsers().subscribe( (users: User[]) => {

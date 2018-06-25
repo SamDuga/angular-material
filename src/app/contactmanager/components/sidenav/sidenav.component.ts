@@ -41,7 +41,7 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit() {
     this.users = this.userService.getAllUsers();
-    if (this.userSub) this.userSub.unsubscribe;
+    if (this.userSub) this.userSub.unsubscribe();
     this.userSub = this.userService.getAllUsers().subscribe();
 
     this.router.events.subscribe( () => {
@@ -59,7 +59,7 @@ export class SidenavComponent implements OnInit {
 
   toggleDir(): void {
     // Now that's a confusing line, bet it'd be worse without parens
-    this.dir = (this.dir == 'ltr' ? 'rtl' : 'ltr');
+    this.dir = (this.dir === 'ltr' ? 'rtl' : 'ltr');
   }
 
   openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
@@ -70,7 +70,7 @@ export class SidenavComponent implements OnInit {
     let diaglogRef = this.dialog.open(EditContactDialogComponent, {width: '450px', data: {editUser: user} } );
 
     diaglogRef.afterClosed().subscribe( result => {
-      console.log('The diaglog was closed', result)
+      console.log('The diaglog was closed', result);
 
       if (result) this.openSnackBar('Contact updated!', '');
     });
@@ -80,7 +80,7 @@ export class SidenavComponent implements OnInit {
     let diaglogRef = this.dialog.open(DeleteContactDialogComponent, {width: '480px', data: {delUser: user} } );
 
     diaglogRef.afterClosed().subscribe( result => {
-      console.log('The diaglog was closed', result)
+      console.log('The diaglog was closed', result);
 
       if (result) this.openSnackBar('Contact deleted!', '');
     });
@@ -90,7 +90,7 @@ export class SidenavComponent implements OnInit {
     let diaglogRef = this.dialog.open(DeleteAllDialogComponent, {width: '500px'} );
 
     diaglogRef.afterClosed().subscribe( result => {
-      console.log('The diaglog was closed', result)
+      console.log('The diaglog was closed', result);
 
       if (result) this.openSnackBar('You nuked it!', '');
     });

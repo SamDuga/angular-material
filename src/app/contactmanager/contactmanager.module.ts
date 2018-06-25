@@ -53,6 +53,11 @@ const routes: Routes = [
     DeleteContactDialogComponent,
     DeleteAllDialogComponent
   ],
-  entryComponents: [ NewContactDialogComponent, NewNoteDialogComponent, EditContactDialogComponent, DeleteContactDialogComponent, DeleteAllDialogComponent ]
+  entryComponents: [ 
+    NewContactDialogComponent, 
+    NewNoteDialogComponent, 
+    EditContactDialogComponent, 
+    DeleteContactDialogComponent, 
+    DeleteAllDialogComponent ]
 })
 export class ContactmanagerModule { }

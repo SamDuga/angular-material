@@ -13,9 +13,7 @@
     "curly": false,
     "eofline": true,
     "forin": true,
-    "import-blacklist": [
-      true,
-    ],
+    "import-blacklist": true,
     "import-spacing": true,
     "indent": [
       true,
@@ -54,7 +52,7 @@
     "no-empty-interface": true,
     "no-eval": true,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-misused-new": true,
