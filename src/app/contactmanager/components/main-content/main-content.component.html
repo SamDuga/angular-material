@@ -1,0 +1,48 @@
+<div *ngIf='user'>
+  <mat-card>
+
+    <mat-card-header>
+      <div></div>
+      <mat-icon mat-card-avatar svgIcon='{{ user.avatar }}'></mat-icon>
+      <mat-card-title>
+        <h1>{{ user.name }}</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Birthday: {{ user.birthDate | date: 'd LLLL'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label='Bio'>
+          <p>{{ user.bio }}</p>
+        </mat-tab>
+        <mat-tab label='Notes'>
+          <app-notes [notes]='userNotes'></app-notes>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+<div *ngIf='landing'>
+    <mat-card>
+  
+      <mat-card-header>
+        <div></div>
+        <mat-card-title>
+          <h1>Welcome to Contact Manager!</h1>
+        </mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+          <h3>There is currently no contact selected</h3>
+          <div *ngIf='empty'>
+            <h4>You currently have no contacts, so here's a picture of a dog. Isn't he a good boy?</h4>
+            <img mat-card-image src="http://cdn3-www.dogtime.com/assets/uploads/gallery/pit-bull-dog-breed-pictures/pit-bull-dog-breed-picture-1.jpg">
+          </div>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>

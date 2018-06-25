@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>
+  <mat-icon></mat-icon>
+  Add new note</h1>
+
+<mat-dialog-content>
+
+  <div class='dialog-container'>
+
+    <mat-form-field>
+      <input matInput required placeholder='Select note date' [matDatepicker]='picker' [formControl]='date' [(ngModel)]='newNote.date'>
+      <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error>You must add a date to this note !</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder='Enter text...' [formControl]='noteText' [(ngModel)]='newNote.title'></textarea>
+    </mat-form-field>
+
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button mat-button color='primary' (click)='save()'>
+    <mat-icon>save</mat-icon> Save
+  </button>
+
+  <button mat-button color='primary' (click)='dismiss()'>
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+
+</mat-dialog-actions>

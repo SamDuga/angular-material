@@ -1,0 +1,12 @@
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-container > * {
+   width: 100%;    
+}
+
+.del-button ::ng-deep .mat-button-focus-overlay {
+    background-color: transparentize($color:  tomato, $amount: 0.75);
+}

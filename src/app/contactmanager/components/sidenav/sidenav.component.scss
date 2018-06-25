@@ -1,0 +1,34 @@
+.app-sidenav-containter {
+    flex: 1;
+    position: absolute;
+    width: 100%;
+    min-width: 100%;
+    height: 1000px;
+    min-height: 100%;
+}
+
+.app-sidenav-content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.app-sidenav {
+    width: 350px;
+}
+
+.wrapper {
+    margin: 40px;
+}
+
+.refreshButton {
+    width: 100%;
+}
+
+.deleteButton {
+    width: 100%;
+}
+
+.deleteButton ::ng-deep .mat-button-focus-overlay {
+    background-color: transparentize($color:  tomato, $amount: 0.75);
+}
