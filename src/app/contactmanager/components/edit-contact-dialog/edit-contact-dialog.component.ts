@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { UserStorageService } from '../../services/user-storage.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { User } from '../../models/user';
 import { FormControl, Validators } from '@angular/forms';
+
+import { User } from '../../models/user';
+import { UserStorageService } from '../../services/user-storage.service';
 
 @Component({
   selector: 'app-edit-contact-dialog',
@@ -12,11 +13,11 @@ import { FormControl, Validators } from '@angular/forms';
 export class EditContactDialogComponent implements OnInit {
 
   public user: User;
-  avatars: string[] = ['svg-1', 'svg-2', 'svg-3', 'svg-4'];
-  name = new FormControl('', [Validators.required]);
-  birthDate = new FormControl('');
-  avatar = new FormControl('');
-  bio = new FormControl('');
+  public avatars: string[] = ['svg-1', 'svg-2', 'svg-3', 'svg-4'];
+  public name = new FormControl('', [Validators.required]);
+  public birthDate = new FormControl('');
+  public avatar = new FormControl('');
+  public bio = new FormControl('');
 
   constructor(
     private dialogRef: MatDialogRef<EditContactDialogComponent>,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserStorageService } from '../../services/user-storage.service';
 import { MatDialogRef } from '@angular/material';
+
+import { UserStorageService } from '../../services/user-storage.service';
 
 @Component({
   selector: 'app-delete-all-dialog',
@@ -18,8 +19,11 @@ export class DeleteAllDialogComponent implements OnInit {
   }
 
   delete(): void {
-    console.log('ERICK CANNOT BE DESTROYED');
-    this.userService.deleteAllUsers().then( users => this.dialogRef.close(users) );
+    for (let i = 0; i < this.userService.usedIds.length; i++) {
+      this.userService.usedIds.pop();
+    }
+    this.userService.usedIds = [];
+    this.userService.deleteAllUsers().then(users => this.dialogRef.close(users));
     // window.location.reload();
   }
 

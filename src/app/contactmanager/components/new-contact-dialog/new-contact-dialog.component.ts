@@ -1,7 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { User } from '../../models/user';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { UserStorageService } from '../../services/user-storage.service';
 
@@ -12,17 +14,17 @@ import { UserStorageService } from '../../services/user-storage.service';
 })
 export class NewContactDialogComponent implements OnInit {
 
-  avatars: string[] = ['svg-1', 'svg-2', 'svg-3', 'svg-4'];
-  user: User;
-  name = new FormControl('', [Validators.required]);
-  birthDate = new FormControl('');
-  avatar = new FormControl('');
-  bio = new FormControl('');
+  public avatars: string[] = ['svg-1', 'svg-2', 'svg-3', 'svg-4'];
+  public user: User;
+  public name = new FormControl('', [Validators.required]);
+  public birthDate = new FormControl('');
+  public avatar = new FormControl('');
+  public bio = new FormControl('');
 
   constructor(
     private dialogRef: MatDialogRef<NewContactDialogComponent>,
     private userService: UserStorageService,
-    //@Inject(MAT_DIALOG_DATA) private data: any
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class NewContactDialogComponent implements OnInit {
   save() {
     this.userService.addUser(this.user).then( user => {
       this.dialogRef.close(user);
+      this.router.navigate(['contactmanager', this.user.id]);
     });
 
     // this.userService.addUser(this.user);

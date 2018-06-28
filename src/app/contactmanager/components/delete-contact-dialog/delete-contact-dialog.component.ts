@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { UserStorageService } from '../../services/user-storage.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { User } from '../../models/user';
+import { UserStorageService } from '../../services/user-storage.service';
 
 @Component({
   selector: 'app-delete-contact-dialog',

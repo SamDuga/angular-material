@@ -40,7 +40,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forChild(routes)
   ],
-  providers: [ UserService, UserStorageService ] ,
+  providers: [ UserService, UserStorageService ],
   declarations: [
     ContactmanagerAppComponent,
     ToolbarComponent,
